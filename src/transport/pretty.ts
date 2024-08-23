@@ -25,8 +25,16 @@ export class PrettyTransport implements Transport {
         }${metaEnd} ${entry.message}\n`;
 
         for (const [key, value] of Object.entries(entry.attributes)) {
+            const formattedValue = formatAttributeValue(value);
+
             output += `  ${chalk.gray(`${key}:`)}`;
-            output += formatAttribute(value).replace(/^(?!$)/gm, "  ");
+
+            if (!formattedValue.includes("\n")) {
+                output += formattedValue;
+            } else {
+                output += formattedValue.replace(/^(?!$)/gm, "    ");
+            }
+
             output += "\n";
         }
 
@@ -34,7 +42,7 @@ export class PrettyTransport implements Transport {
     }
 }
 
-const formatAttribute = (value: unknown): string => {
+const formatAttributeValue = (value: unknown): string => {
     if (!isError(value)) {
         return inspect(value, { colors: colorsSupported, compact: false });
     }
