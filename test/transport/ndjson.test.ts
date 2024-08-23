@@ -1,7 +1,7 @@
 import { afterAll, afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { LogLevel, NdJsonTransport } from '../../src/index.js';
 
-const fakeTime = new Date(2000, 1, 1, 0, 0, 0, 0);
+const fakeTime = new Date("2000-01-01T00:00:00.000Z");
 let outputs: (string | Uint8Array)[] = [];
 const processMock = vi.spyOn(process.stdout, "write").mockImplementation((data) => {
     outputs.push(data);
@@ -32,7 +32,7 @@ it("should send log to transport", () => {
         attributes: {},
     });
 
-    expect(processMock).toHaveBeenNthCalledWith(1, '{"time":"2000-01-31T23:00:00.000Z","msg":"Test message","level":"info"}');
+    expect(processMock).toHaveBeenNthCalledWith(1, '{"time":"2000-01-01T00:00:00.000Z","msg":"Test message","level":"info"}');
     expect(processMock).toHaveBeenNthCalledWith(2, "\n");
 });
 
@@ -47,7 +47,7 @@ it("should merge attributes", () => {
         },
     });
 
-    expect(processMock).toHaveBeenNthCalledWith(1, '{"time":"2000-01-31T23:00:00.000Z","msg":"Test message","level":"info","foo":"bar"}');
+    expect(processMock).toHaveBeenNthCalledWith(1, '{"time":"2000-01-01T00:00:00.000Z","msg":"Test message","level":"info","foo":"bar"}');
     expect(processMock).toHaveBeenNthCalledWith(2, "\n");
 });
 

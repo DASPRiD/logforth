@@ -9,7 +9,7 @@ class MockTransport implements Transport {
     }
 }
 
-const fakeTime = new Date(2000, 1, 1, 0, 0, 0, 0);
+const fakeTime = new Date("2000-01-01T00:00:00.000Z");
 
 beforeEach(() => {
     vi.useFakeTimers();
