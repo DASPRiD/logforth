@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/dasprid/logforth/compare/v1.0.1...v1.1.0) (2024-08-23)
+
+
+### Features
+
+* move level in ndjson before msg ([922164a](https://github.com/dasprid/logforth/commit/922164a687929204f546eb5b2352c91bba6c1657))
+
 ## [1.0.1](https://github.com/dasprid/logforth/compare/v1.0.0...v1.0.1) (2024-08-23)
 
 
