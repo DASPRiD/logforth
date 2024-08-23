@@ -17,8 +17,8 @@ export class NdJsonTransport implements Transport {
         const result: Record<string, unknown> = {};
 
         result.time = entry.time.toISOString();
-        result.msg = entry.message;
         result.level = logLevelNames[entry.level];
+        result.msg = entry.message;
 
         for (const [key, value] of Object.entries(entry.attributes)) {
             if (!isError(value)) {
