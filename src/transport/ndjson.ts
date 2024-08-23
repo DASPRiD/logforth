@@ -1,6 +1,7 @@
 import { serializeError } from "serialize-error";
 import { isError } from "../error.js";
-import { type LogEntry, LogLevel, type Transport } from "../logger.js";
+import { LogLevel } from "../level.js";
+import type { LogEntry, Transport } from "../logger.js";
 
 const logLevelNames: Record<LogLevel, string> = {
     [LogLevel.Fatal]: "fatal",

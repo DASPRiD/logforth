@@ -1,16 +1,6 @@
 import { AsyncLocalStorage } from "node:async_hooks";
+import { LogLevel } from "./level.js";
 import { NdJsonTransport } from "./transport/ndjson.js";
-
-export enum LogLevel {
-    Fatal = 60,
-    Error = 50,
-    Warn = 40,
-    Info = 30,
-    Debug = 20,
-    Trace = 10,
-}
-
-export const disableLogging = 999;
 
 export type Transport = {
     log: (entry: LogEntry) => void;
@@ -45,7 +35,7 @@ export class Logger {
     }
 
     public log(level: LogLevel, message: string, attributes?: Attributes): void {
-        if (level <= this.minLevel) {
+        if (level < this.minLevel) {
             return;
         }
 
@@ -83,6 +73,6 @@ export class Logger {
 
     public async withContext<T>(attributes: Attributes, next: () => Promise<T> | T): Promise<T> {
         const defaultAttributes = this.storage.getStore() ?? {};
-        return this.storage.run({ ...defaultAttributes, attributes }, next);
+        return this.storage.run({ ...defaultAttributes, ...attributes }, next);
     }
 }

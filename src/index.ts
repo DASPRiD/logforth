@@ -1,12 +1,11 @@
 export {
     Logger,
     type LogEntry,
-    LogLevel,
-    disableLogging,
     type Attributes,
     type LoggerOptions,
     type Transport,
 } from "./logger.js";
+export { LogLevel, disableLogging } from "./level.js";
 export {
     isError,
     type StackFrame,

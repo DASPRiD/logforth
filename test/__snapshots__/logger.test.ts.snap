@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should allow context specific attributes 1`] = `
+[
+  {
+    "attributes": {
+      "another": "attribute",
+      "baz": "bat",
+      "foo": "bar",
+    },
+    "level": 30,
+    "message": "test",
+    "time": 2000-01-31T23:00:00.000Z,
+  },
+]
+`;
+
+exports[`should merge default attributes 1`] = `
+[
+  {
+    "attributes": {
+      "baz": "bat",
+      "foo": "bar",
+    },
+    "level": 30,
+    "message": "test",
+    "time": 2000-01-31T23:00:00.000Z,
+  },
+]
+`;
+
+exports[`should omit entries below min level 1`] = `
+[
+  {
+    "attributes": {},
+    "level": 30,
+    "message": "foo",
+    "time": 2000-01-31T23:00:00.000Z,
+  },
+]
+`;
+
+exports[`should send log to transport 1`] = `
+[
+  {
+    "attributes": {},
+    "level": 30,
+    "message": "test",
+    "time": 2000-01-31T23:00:00.000Z,
+  },
+]
+`;
+
+exports[`should send log with attributes to transport 1`] = `
+[
+  {
+    "attributes": {
+      "foo": "bar",
+    },
+    "level": 30,
+    "message": "test",
+    "time": 2000-01-31T23:00:00.000Z,
+  },
+]
+`;

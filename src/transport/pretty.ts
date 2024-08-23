@@ -2,7 +2,8 @@ import path from "node:path";
 import { inspect } from "node:util";
 import chalk from "chalk";
 import { type StackFrame, isError, parseStack } from "../error.js";
-import { type LogEntry, LogLevel, type Transport } from "../logger.js";
+import { LogLevel } from "../level.js";
+import type { LogEntry, Transport } from "../logger.js";
 
 const logLevelNames: Record<LogLevel, string> = {
     [LogLevel.Fatal]: chalk.redBright("FATAL"),
