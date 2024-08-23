@@ -22,18 +22,12 @@ export class PrettyTransport implements Transport {
     public log(entry: LogEntry): void {
         let output = `${metaStart}${entry.time.toISOString().slice(0, -5)}Z ${
             logLevelNames[entry.level]
-        }${metaEnd} ${entry.message}`;
-        const attributeEntries = Object.entries(entry.attributes);
+        }${metaEnd} ${entry.message}\n`;
 
-        if (attributeEntries.length === 0) {
-            output += "\n";
-            process.stdout.write(output);
-            return;
-        }
-
-        for (const [key, value] of attributeEntries) {
+        for (const [key, value] of Object.entries(entry.attributes)) {
             output += `  ${chalk.gray(`${key}:`)}`;
             output += formatAttribute(value).replace(/^(?!$)/gm, "  ");
+            output += "\n";
         }
 
         process.stdout.write(output);
@@ -48,7 +42,7 @@ const formatAttribute = (value: unknown): string => {
     let result = `${value.name}: ${value.message}`;
 
     if (value.stack) {
-        result += `\nStack: ${formatStack(parseStack(value.stack))}`;
+        result += `\nStack:\n${formatStack(parseStack(value.stack))}`;
     }
 
     return result;
