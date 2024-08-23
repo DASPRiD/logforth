@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/dasprid/logforth/compare/v1.1.1...v1.1.2) (2024-08-23)
+
+
+### Bug Fixes
+
+* **pretty:** use better indentation ([f62309d](https://github.com/dasprid/logforth/commit/f62309dfc072481dce68ae89356f319c3c7dbaa4))
+
 ## [1.1.1](https://github.com/dasprid/logforth/compare/v1.1.0...v1.1.1) (2024-08-23)
 
 
