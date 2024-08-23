@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/dasprid/logforth/compare/v1.1.3...v1.1.4) (2024-08-23)
+
+
+### Bug Fixes
+
+* **pretty:** add space before single-line attributes ([53a9ee4](https://github.com/dasprid/logforth/commit/53a9ee40f14b374ce624e677f99ffac90c790398))
+
 ## [1.1.3](https://github.com/dasprid/logforth/compare/v1.1.2...v1.1.3) (2024-08-23)
 
 
