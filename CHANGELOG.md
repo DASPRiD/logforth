@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/dasprid/logforth/compare/v1.1.2...v1.1.3) (2024-08-23)
+
+
+### Bug Fixes
+
+* **pretty:** insert newline before multi-line attributes ([4a35f4e](https://github.com/dasprid/logforth/commit/4a35f4e534cb1acca74c1bfc1ebf01c988563548))
+
 ## [1.1.2](https://github.com/dasprid/logforth/compare/v1.1.1...v1.1.2) (2024-08-23)
 
 
