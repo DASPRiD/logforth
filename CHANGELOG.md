@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/dasprid/logforth/compare/v1.1.0...v1.1.1) (2024-08-23)
+
+
+### Bug Fixes
+
+* fix newline formatting of pretty transport ([8ff5b19](https://github.com/dasprid/logforth/commit/8ff5b192dfa90ee620ee5ce8b8910b635839c2a3))
+
 # [1.1.0](https://github.com/dasprid/logforth/compare/v1.0.1...v1.1.0) (2024-08-23)
 
 
