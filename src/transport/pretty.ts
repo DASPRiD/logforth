@@ -32,7 +32,7 @@ export class PrettyTransport implements Transport {
             if (!formattedValue.includes("\n")) {
                 output += formattedValue;
             } else {
-                output += formattedValue.replace(/^(?!$)/gm, "    ");
+                output += `\n${formattedValue.replace(/^(?!$)/gm, "    ")}`;
             }
 
             output += "\n";
