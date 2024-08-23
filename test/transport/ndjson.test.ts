@@ -32,7 +32,7 @@ it("should send log to transport", () => {
         attributes: {},
     });
 
-    expect(processMock).toHaveBeenNthCalledWith(1, '{"time":"2000-01-01T00:00:00.000Z","msg":"Test message","level":"info"}');
+    expect(processMock).toHaveBeenNthCalledWith(1, '{"time":"2000-01-01T00:00:00.000Z","level":"info","msg":"Test message"}');
     expect(processMock).toHaveBeenNthCalledWith(2, "\n");
 });
 
@@ -47,7 +47,7 @@ it("should merge attributes", () => {
         },
     });
 
-    expect(processMock).toHaveBeenNthCalledWith(1, '{"time":"2000-01-01T00:00:00.000Z","msg":"Test message","level":"info","foo":"bar"}');
+    expect(processMock).toHaveBeenNthCalledWith(1, '{"time":"2000-01-01T00:00:00.000Z","level":"info","msg":"Test message","foo":"bar"}');
     expect(processMock).toHaveBeenNthCalledWith(2, "\n");
 });
 
