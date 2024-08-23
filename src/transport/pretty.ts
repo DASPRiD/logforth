@@ -30,7 +30,7 @@ export class PrettyTransport implements Transport {
             output += `  ${chalk.gray(`${key}:`)}`;
 
             if (!formattedValue.includes("\n")) {
-                output += formattedValue;
+                output += ` ${formattedValue}`;
             } else {
                 output += `\n${formattedValue.replace(/^(?!$)/gm, "    ")}`;
             }
