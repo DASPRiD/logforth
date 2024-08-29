@@ -1,6 +1,7 @@
 import path from "node:path";
 import { inspect } from "node:util";
 import chalk from "chalk";
+import { serializeError } from "serialize-error";
 import { type StackFrame, isError, parseStack } from "../error.js";
 import { LogLevel } from "../level.js";
 import type { LogEntry, Transport } from "../logger.js";
@@ -25,32 +26,48 @@ export class PrettyTransport implements Transport {
         }${metaEnd} ${entry.message}\n`;
 
         for (const [key, value] of Object.entries(entry.attributes)) {
-            const formattedValue = formatAttributeValue(value);
-
-            output += `  ${chalk.gray(`${key}:`)}`;
-
-            if (!formattedValue.includes("\n")) {
-                output += ` ${formattedValue}`;
-            } else {
-                output += `\n${formattedValue.replace(/^(?!$)/gm, "    ")}`;
-            }
-
-            output += "\n";
+            output += `${formatAttribute(key, value, 2, true)}\n`;
         }
 
         process.stdout.write(output);
     }
 }
 
-const formatAttributeValue = (value: unknown): string => {
-    if (!isError(value)) {
+const formatAttribute = (
+    key: string,
+    value: unknown,
+    indent: number,
+    formatErrors: boolean,
+): string => {
+    const indentChars = " ".repeat(indent);
+    const formattedValue = formatAttributeValue(value, formatErrors);
+    let result = indentChars;
+
+    result += chalk.gray(`${key}:`);
+
+    if (!formattedValue.includes("\n")) {
+        result += ` ${formattedValue}`;
+    } else {
+        result += `\n${formattedValue.replace(/^(?!$)/gm, `${indentChars}${indentChars}`)}`;
+    }
+
+    return result;
+};
+
+const formatAttributeValue = (value: unknown, formatErrors: boolean): string => {
+    if (!(isError(value) && formatErrors)) {
         return inspect(value, { colors: colorsSupported, compact: false });
     }
 
-    let result = `${value.name}: ${value.message}`;
+    const { name, message, stack, ...rest } = serializeError(value);
+    let result = `${name}: ${message}`;
 
     if (value.stack) {
-        result += `\nStack:\n${formatStack(parseStack(value.stack))}`;
+        result += `\nStack:\n${formatStack(parseStack(stack ?? ""))}`;
+    }
+
+    for (const [key, value] of Object.entries(rest)) {
+        result += `\n${formatAttribute(key, value, 4, false)}`;
     }
 
     return result;
