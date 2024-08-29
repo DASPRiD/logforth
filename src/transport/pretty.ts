@@ -66,7 +66,7 @@ const formatAttributeValue = (value: unknown, formatErrors: boolean): string => 
     }
 
     for (const [key, value] of Object.entries(rest)) {
-        result += `\n${formatAttribute(key, value, 2, false)}`;
+        result += `\n${formatAttribute(key, value, 0, false)}`;
     }
 
     return result;
