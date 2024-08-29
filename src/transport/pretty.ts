@@ -39,16 +39,15 @@ const formatAttribute = (
     indent: number,
     formatErrors: boolean,
 ): string => {
-    const indentChars = " ".repeat(indent);
     const formattedValue = formatAttributeValue(value, formatErrors);
-    let result = indentChars;
+    let result = " ".repeat(indent);
 
     result += chalk.gray(`${key}:`);
 
     if (!formattedValue.includes("\n")) {
         result += ` ${formattedValue}`;
     } else {
-        result += `\n${formattedValue.replace(/^(?!$)/gm, `${indentChars}${indentChars}`)}`;
+        result += `\n${formattedValue.replace(/^(?!$)/gm, " ".repeat(indent + 2))}`;
     }
 
     return result;
@@ -67,7 +66,7 @@ const formatAttributeValue = (value: unknown, formatErrors: boolean): string => 
     }
 
     for (const [key, value] of Object.entries(rest)) {
-        result += `\n${formatAttribute(key, value, 4, false)}`;
+        result += `\n${formatAttribute(key, value, 2, false)}`;
     }
 
     return result;
