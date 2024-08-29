@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/dasprid/logforth/compare/v1.1.4...v1.2.0) (2024-08-29)
+
+
+### Features
+
+* **pretty:** format additional attributes in errors ([32ce0bb](https://github.com/dasprid/logforth/commit/32ce0bb840a6ccade789e7bff42ab69a3f7e4040))
+
 ## [1.1.4](https://github.com/dasprid/logforth/compare/v1.1.3...v1.1.4) (2024-08-23)
 
 
