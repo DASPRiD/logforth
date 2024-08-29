@@ -1,6 +1,6 @@
 {
   "name": "logforth",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Simple logging framework for NodeJS",
   "type": "module",
   "author": "Ben Scholzen 'DASPRiD'",

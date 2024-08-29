@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/dasprid/logforth/compare/v1.2.1...v1.2.2) (2024-08-29)
+
+
+### Bug Fixes
+
+* **pretty:** remove base indentation from error attributes ([5931935](https://github.com/dasprid/logforth/commit/5931935821c435f1af960f6cda6e4a1eb4bd755d))
+
 ## [1.2.1](https://github.com/dasprid/logforth/compare/v1.2.0...v1.2.1) (2024-08-29)
 
 
