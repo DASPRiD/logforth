@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/DASPRiD/logforth/compare/v1.2.2...v1.2.3) (2025-10-23)
+
+
+### Bug Fixes
+
+* add provenance attestation ([23399fa](https://github.com/DASPRiD/logforth/commit/23399fa7b35537e13f2c236547586cea7717f82c))
+
 ## [1.2.2](https://github.com/dasprid/logforth/compare/v1.2.1...v1.2.2) (2024-08-29)
 
 
