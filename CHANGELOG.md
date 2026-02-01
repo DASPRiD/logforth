@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/DASPRiD/logforth/compare/v1.2.3...v1.3.0) (2026-02-01)
+
+
+### Features
+
+* replace LogLevel enum with class instance ([8f788fc](https://github.com/DASPRiD/logforth/commit/8f788fc782f8c033ebd50270e5001c6c209d6d3e))
+
 ## [1.2.3](https://github.com/DASPRiD/logforth/compare/v1.2.2...v1.2.3) (2025-10-23)
 
 
