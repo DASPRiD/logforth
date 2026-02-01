@@ -23,19 +23,24 @@ export type LoggerOptions = {
 
 export class Logger {
     private readonly transport: Transport;
-    private readonly minLevel: LogLevel | number;
+    private readonly minLevel: number;
     private readonly attributes: Attributes;
     private readonly storage: AsyncLocalStorage<Attributes>;
 
     public constructor(options?: LoggerOptions) {
         this.transport = options?.transport ?? new NdJsonTransport();
-        this.minLevel = options?.minLevel ?? 0;
+        this.minLevel =
+            options?.minLevel !== undefined
+                ? typeof options.minLevel === "number"
+                    ? options.minLevel
+                    : options.minLevel.level
+                : 0;
         this.attributes = options?.attributes ?? {};
         this.storage = new AsyncLocalStorage();
     }
 
-    public log(level: LogLevel, message: string, attributes?: Attributes): void {
-        if (level < this.minLevel) {
+    public log(logLevel: LogLevel, message: string, attributes?: Attributes): void {
+        if (logLevel.level < this.minLevel) {
             return;
         }
 
@@ -43,7 +48,7 @@ export class Logger {
 
         const entry: LogEntry = {
             time: new Date(),
-            level,
+            level: logLevel,
             message,
             attributes: attributes ? { ...defaultAttributes, ...attributes } : defaultAttributes,
         };
@@ -69,6 +74,10 @@ export class Logger {
 
     public debug(message: string, attributes?: Attributes): void {
         this.log(LogLevel.Debug, message, attributes);
+    }
+
+    public trace(message: string, attributes?: Attributes): void {
+        this.log(LogLevel.Trace, message, attributes);
     }
 
     public async withContext<T>(attributes: Attributes, next: () => Promise<T> | T): Promise<T> {

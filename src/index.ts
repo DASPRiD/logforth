@@ -5,7 +5,7 @@ export {
     type LoggerOptions,
     type Transport,
 } from "./logger.js";
-export { LogLevel, disableLogging } from "./level.js";
+export { LogLevel, disableLogging, DISABLE_LOGGING } from "./level.js";
 export {
     isError,
     type StackFrame,

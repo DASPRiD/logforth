@@ -3,16 +3,16 @@ import { inspect } from "node:util";
 import chalk from "chalk";
 import { serializeError } from "serialize-error";
 import { type StackFrame, isError, parseStack } from "../error.js";
-import { LogLevel } from "../level.js";
+import type { LogLevelName } from "../level.js";
 import type { LogEntry, Transport } from "../logger.js";
 
-const logLevelNames: Record<LogLevel, string> = {
-    [LogLevel.Fatal]: chalk.redBright("FATAL"),
-    [LogLevel.Error]: chalk.red("ERROR"),
-    [LogLevel.Warn]: chalk.yellow("WARN"),
-    [LogLevel.Info]: chalk.blue("INFO"),
-    [LogLevel.Debug]: chalk.green("DEBUG"),
-    [LogLevel.Trace]: chalk.greenBright("TRACING"),
+const logLevelNames: Record<LogLevelName, string> = {
+    fatal: chalk.redBright("FATAL"),
+    error: chalk.red("ERROR"),
+    warn: chalk.yellow("WARN"),
+    info: chalk.blue("INFO"),
+    debug: chalk.green("DEBUG"),
+    trace: chalk.greenBright("TRACING"),
 };
 
 const metaStart = chalk.gray("[");
@@ -22,7 +22,7 @@ const colorsSupported = chalk.level > 0;
 export class PrettyTransport implements Transport {
     public log(entry: LogEntry): void {
         let output = `${metaStart}${entry.time.toISOString().slice(0, -5)}Z ${
-            logLevelNames[entry.level]
+            logLevelNames[entry.level.name]
         }${metaEnd} ${entry.message}\n`;
 
         for (const [key, value] of Object.entries(entry.attributes)) {

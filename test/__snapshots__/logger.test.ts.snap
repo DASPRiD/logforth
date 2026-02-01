@@ -8,7 +8,10 @@ exports[`should allow context specific attributes 1`] = `
       "baz": "bat",
       "foo": "bar",
     },
-    "level": 30,
+    "level": LogLevel {
+      "level": 30,
+      "name": "info",
+    },
     "message": "test",
     "time": 2000-01-01T00:00:00.000Z,
   },
@@ -22,7 +25,10 @@ exports[`should merge default attributes 1`] = `
       "baz": "bat",
       "foo": "bar",
     },
-    "level": 30,
+    "level": LogLevel {
+      "level": 30,
+      "name": "info",
+    },
     "message": "test",
     "time": 2000-01-01T00:00:00.000Z,
   },
@@ -33,7 +39,10 @@ exports[`should omit entries below min level 1`] = `
 [
   {
     "attributes": {},
-    "level": 30,
+    "level": LogLevel {
+      "level": 30,
+      "name": "info",
+    },
     "message": "foo",
     "time": 2000-01-01T00:00:00.000Z,
   },
@@ -44,7 +53,10 @@ exports[`should send log to transport 1`] = `
 [
   {
     "attributes": {},
-    "level": 30,
+    "level": LogLevel {
+      "level": 30,
+      "name": "info",
+    },
     "message": "test",
     "time": 2000-01-01T00:00:00.000Z,
   },
@@ -57,7 +69,10 @@ exports[`should send log with attributes to transport 1`] = `
     "attributes": {
       "foo": "bar",
     },
-    "level": 30,
+    "level": LogLevel {
+      "level": 30,
+      "name": "info",
+    },
     "message": "test",
     "time": 2000-01-01T00:00:00.000Z,
   },
